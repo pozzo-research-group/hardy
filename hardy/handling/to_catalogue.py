@@ -54,7 +54,6 @@ Current Status:
     _safe_clear_dirflow: Used to "safely" clear a directory to overwrite with
                          new files. Clears NOTHING unless specific folder
                          structure is in place, to avoid errors.
-
 """
 
 
