@@ -15,7 +15,7 @@ data_path = './hardy/test/test_folder_split/'
 class TestSimulationTools(unittest.TestCase):
 
     def test_hold_out_test_set(self):
-        num_files = 5
+        num_files = 2
         # Frm .csv files
         test_set_filenames = preprocessing.hold_out_test_set(
             data_path, number_of_files_per_class=num_files)
@@ -48,6 +48,8 @@ class TestSimulationTools(unittest.TestCase):
             'the return should be the path to the test folder'
         assert os.path.exists(test_folder), \
             'the test folder was not correctly created'
+        shutil.rmtree(test_folder)
+        print('the test folder was correctly deleted after testing')
         pass
 
     def test_classes_folder_split(self):
@@ -63,6 +65,8 @@ class TestSimulationTools(unittest.TestCase):
             # the next test iteration works
             for file in [n for n in os.listdir(path)]:
                 shutil.move(path + file, data_path)
+            shutil.rmtree(path)
+            print('the class folders were correctly deleted after testing')
         pass
 
     def test_save_to_folder(self):
@@ -70,4 +74,6 @@ class TestSimulationTools(unittest.TestCase):
             data_path, 'test_project', 'test_1')
         assert os.path.exists(folder_path), \
             'the fodler was not correctly created'
+        shutil.rmtree(folder_path)
+        print('the result folder was correctly deleted after testing')
         pass

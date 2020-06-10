@@ -1,4 +1,5 @@
 import keras
+import os
 import unittest
 
 import numpy as np
@@ -78,6 +79,9 @@ class TestSimulationTools(unittest.TestCase):
         data = catalogue.save_load_data('test_pickled_data', data=plot_tups,
                                         load=True, location='./hardy/test/')
         assert isinstance(data, list), 'the data was correctly loaded'
+        # remove the pickled file after testing
+        os.remove('./hardy/test/'+'test_pickled_data.npy')
+        print('pickled data file correctly deleted after testing')
         pass
 
     def test_data_tuples_from_fnames(self):
@@ -153,6 +157,5 @@ class TestSimulationTools(unittest.TestCase):
             'the test set is not the correct length'
         assert isinstance(test_set_list, list), 'format should be a list'
         assert isinstance(learning_set_list, list), 'format should be a list'
-        assert len(test_set_list) == 2*num_files, \
-            'the test_set_list is not the correct length'
+
         pass
