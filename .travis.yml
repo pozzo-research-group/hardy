@@ -1,5 +1,5 @@
 # what language the build will be configured for
-language: python
+language: generic
 
 os:
     - osx
